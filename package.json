@@ -1,0 +1,23 @@
+{
+  "name": "glorm.js",
+  "version": "1.0.0",
+  "description": "glorm.js is a simple ORM framework for MySQL database system.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glorfin1337/glorm.js.git"
+  },
+  "keywords": [],
+  "author": "glorfin1337",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glorfin1337/glorm.js/issues"
+  },
+  "homepage": "https://github.com/glorfin1337/glorm.js#readme"
+}
