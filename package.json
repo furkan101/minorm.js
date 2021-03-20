@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/glorfin1337/glorm.js/issues"
   },
-  "homepage": "https://github.com/glorfin1337/glorm.js#readme"
+  "homepage": "https://github.com/glorfin1337/glorm.js#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
 }
