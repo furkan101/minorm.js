@@ -1,13 +1,13 @@
 {
   "name": "glorm.js",
   "version": "1.0.0",
-  "description": "glorm.js is a simple ORM framework for MySQL database system.",
+  "description": "glorm.js is a simple library to use JSON queries for MySQL database, kind of a little orm, written in Node.js.",
   "main": "index.js",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node example.js"
   },
   "repository": {
     "type": "git",

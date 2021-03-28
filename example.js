@@ -19,4 +19,9 @@ glorm.createTable('users', {
     rotation: "float - 3"
 })
 
-glorm.destroyTable('users')
+glorm.insertData('users', {
+    name: "asdf",
+    surname: "asdfasdfasdf"
+})
+
+//glorm.destroyTable('users')

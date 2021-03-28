@@ -20,19 +20,20 @@ module.exports = function() {
     
     this.createTable = (name, data) => {
 
-        if(!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
+        if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
+        if (typeof data !== 'object') throw "Second parameter must be an object."
 
-        var keys = Object.keys(data), values = Object.values(data), sql = `CREATE TABLE IF NOT EXISTS ${name} (`, query = ""
+        var keys = Object.keys(data), values = Object.values(data), query = `CREATE TABLE IF NOT EXISTS ${name} (`
 
         for(let i = 0; i < keys.length; i++) {
-            if(values[i].startsWith("ai")) sql += `${keys[i]} INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(${keys[i]}),`
-            else if(values[i].startsWith("int")) sql += `${keys[i]} INT(${values[i].replace("int - ", "")}),`
-            else if(values[i].startsWith("char")) sql += `${keys[i]} VARCHAR(${values[i].replace("char - ", "")}),`
-            else if(values[i].startsWith("float")) sql += `${keys[i]} FLOAT(${values[i].replace("float - ", "")}),`
-            else if(values[i].startsWith("text")) sql += `${keys[i]} TEXT(${values[i].replace("text - ", "")}),`
+            if(values[i].startsWith("ai")) query += `${keys[i]} INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(${keys[i]}),`
+            else if(values[i].startsWith("int")) query += `${keys[i]} INT(${values[i].replace("int - ", "")}),`
+            else if(values[i].startsWith("char")) query += `${keys[i]} VARCHAR(${values[i].replace("char - ", "")}),`
+            else if(values[i].startsWith("float")) query += `${keys[i]} FLOAT(${values[i].replace("float - ", "")}),`
+            else if(values[i].startsWith("text")) query += `${keys[i]} TEXT(${values[i].replace("text - ", "")}),`
         }
 
-        query = `${sql.slice(0, -1)})`
+        query = `${query.slice(0, -1)})`
         con.query(query, (err, result) => { 
             if (err) throw err
             logCount++
@@ -43,7 +44,7 @@ module.exports = function() {
 
     this.destroyTable = (name) => {
 
-        if(!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
+        if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
 
         let query = `DROP TABLE ${name};`
 
@@ -53,6 +54,27 @@ module.exports = function() {
             console.log(`[GLORM LOG: #${logCount}] >> query '${query}' has been executed.`)
         })
 
+    }
+
+    this.insertData = (table, data) => {
+
+        if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
+        if (typeof data !== 'object') throw "Second parameter must be an object."
+
+        var keys = Object.keys(data), values = Object.values(data), query = `INSERT INTO ${table} (`
+
+        for(let i = 0; i < keys.length; i++) {
+            query += `${keys[i]},`
+        }
+
+        query = `${query.slice(0, -1)}) VALUES(`
+
+        for(let j = 0; j < values.length; j++) {
+            query += `${values[j]},`
+        }
+
+        query = `${query.slice(0, -1)})`
+        console.log(query)
     }
 
 }
