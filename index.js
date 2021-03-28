@@ -41,4 +41,18 @@ module.exports = function() {
     
     }
 
+    this.destroyTable = (name) => {
+
+        if(!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
+
+        let query = `DROP TABLE ${name};`
+
+        con.query(query, (err, result) => { 
+            if (err) throw err
+            logCount++
+            console.log(`[GLORM LOG: #${logCount}] >> query '${query}' has been executed.`)
+        })
+
+    }
+
 }
