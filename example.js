@@ -20,8 +20,11 @@ glorm.createTable('users', {
 })
 
 glorm.insertData('users', {
-    name: "asdf",
-    surname: "asdfasdfasdf"
+    name: "Enes",
+    surname: "Katsaf",
+    age: 18,
+    biography: "I was born in Antalya",
+    rotation: 5
 })
 
 //glorm.destroyTable('users')

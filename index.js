@@ -70,11 +70,17 @@ module.exports = function() {
         query = `${query.slice(0, -1)}) VALUES(`
 
         for(let j = 0; j < values.length; j++) {
-            query += `${values[j]},`
+            if(typeof values[j] == 'string') query += `"${values[j]}",`
+            else query += `${values[j]},`
         }
 
         query = `${query.slice(0, -1)})`
-        console.log(query)
+        
+        con.query(query, (err, result) => {
+            if (err) throw err
+            logCount++
+            console.log(`[GLORM LOG: #${logCount}] >> query '${query}' has been executed.`)            
+        })
     }
 
 }
