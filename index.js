@@ -110,4 +110,13 @@ module.exports = function() {
         })
     }
 
+    this.updateData = (table, data) => {
+
+        if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
+        if (typeof data !== 'object') throw "Second parameter must be an object."
+
+        
+
+    }
+
 }

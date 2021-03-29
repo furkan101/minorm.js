@@ -1,7 +1,7 @@
 {
-  "name": "glorm.js",
+  "name": "minorm.js",
   "version": "1.0.0",
-  "description": "glorm.js is a simple library to use JSON queries for MySQL database, kind of a little orm, written in Node.js.",
+  "description": "minorm.js is a simple library to use JSON queries for MySQL database, kind of a little orm, written in Node.js.",
   "main": "index.js",
   "directories": {
     "example": "example"
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/glorfin1337/glorm.js.git"
+    "url": "git+https://github.com/glorfin1337/minorm.js.git"
   },
   "keywords": [],
   "author": "glorfin1337",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/glorfin1337/glorm.js/issues"
+    "url": "https://github.com/glorfin1337/minorm.js/issues"
   },
-  "homepage": "https://github.com/glorfin1337/glorm.js#readme",
+  "homepage": "https://github.com/glorfin1337/minorm.js#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "mysql": "^2.18.1"
