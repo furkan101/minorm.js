@@ -19,12 +19,18 @@ glorm.createTable('users', {
     rotation: "float - 3"
 })
 
-glorm.insertData('users', {
+/*glorm.insertData('users', {
     name: "Enes",
     surname: "Katsaf",
     age: 18,
     biography: "I was born in Antalya",
     rotation: 5
+})*/
+
+glorm.destroyData('users', {
+    where: {
+        "surname": "Katsaf"
+    }
 })
 
 //glorm.destroyTable('users')

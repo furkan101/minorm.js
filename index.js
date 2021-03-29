@@ -83,4 +83,31 @@ module.exports = function() {
         })
     }
 
+    this.destroyData = (table, data) => {
+
+        if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
+        if (typeof data !== 'object') throw "Second parameter must be an object."
+        
+        let keys = Object.keys(data.where), values = Object.values(data.where), query = `DELETE FROM ${table} WHERE`
+
+        if(keys.length == 1) {
+            if(typeof values[0] == 'string') query += ` ${keys[0]} = "${values[0]}"`
+            else query += ` ${keys[0]} = ${values[0]}`
+        } 
+        else if(keys.length > 1) {
+            for(let i = 0; i < keys.length; i++) {
+                if(typeof values[i] == 'string') query += ` ${keys[i]} = "${values[i]}" AND`
+                else query += ` ${keys[i]} = ${values[i]} AND`
+            }
+
+            query = query.slice(0, -3)
+        }
+
+        con.query(query, (err, result) => {
+            if (err) throw err
+            logCount++
+            console.log(`[GLORM LOG: #${logCount}] >> query '${query}' has been executed.`)            
+        })
+    }
+
 }
