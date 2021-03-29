@@ -14,7 +14,7 @@ module.exports = function() {
         con.connect((err) => {
             if (err) throw err
             logCount++
-            console.log(`[GLORM LOG: #${logCount}] >> Connected to database successfully.`)
+            console.log(`[MINORM LOG: #${logCount}] >> Connected to database successfully.`)
         })
     }
     
@@ -37,7 +37,7 @@ module.exports = function() {
         con.query(query, (err, result) => { 
             if (err) throw err
             logCount++
-            console.log(`[GLORM LOG: #${logCount}] >> query '${query}' has been executed.`)
+            console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)
         })
     
     }
@@ -51,7 +51,7 @@ module.exports = function() {
         con.query(query, (err, result) => { 
             if (err) throw err
             logCount++
-            console.log(`[GLORM LOG: #${logCount}] >> query '${query}' has been executed.`)
+            console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)
         })
 
     }
@@ -79,7 +79,7 @@ module.exports = function() {
         con.query(query, (err, result) => {
             if (err) throw err
             logCount++
-            console.log(`[GLORM LOG: #${logCount}] >> query '${query}' has been executed.`)            
+            console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)            
         })
     }
 
@@ -106,7 +106,7 @@ module.exports = function() {
         con.query(query, (err, result) => {
             if (err) throw err
             logCount++
-            console.log(`[GLORM LOG: #${logCount}] >> query '${query}' has been executed.`)            
+            console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)            
         })
     }
 
@@ -115,7 +115,12 @@ module.exports = function() {
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
         if (typeof data !== 'object') throw "Second parameter must be an object."
 
-        
+    }
+
+    this.searchData = (table, data) => {
+  
+        if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
+        if (typeof data !== 'object') throw "Second parameter must be an object."        
 
     }
 
