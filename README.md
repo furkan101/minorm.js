@@ -1,7 +1,7 @@
 
 # minorm.js
 
-glorm.js is a simple library to use JSON queries for MySQL database, kind of a little orm, written in Node.js.
+minorm.js is a simple library to use JSON queries for MySQL database, kind of a little ORM named from mini-orm, written in Node.js.
 
 # Contributing
 All you have to do is forking repository, coding stuff, committing and creating pull request. I suggest using GitHub Desktop.
