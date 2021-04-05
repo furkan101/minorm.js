@@ -25,7 +25,7 @@ const minorm = new MinormJS()
 
 # Example
 ```javascript
-const MinormJS = require('./index')
+const MinormJS = require('minorm.js')
 const minorm = new MinormJS()
 
 minorm.connectDatabase({
