@@ -3,25 +3,20 @@
 
 minorm.js is a simple library to use JSON queries for MySQL database, kind of a little ORM named from mini-orm, written in Node.js.
 
-# Contributing
-All you have to do is forking repository, coding stuff, committing and creating pull request. I suggest using GitHub Desktop.
-
 # Installation
 
-To install vun.js, use following command on your terminal:
+To install minorm.js, use following command on your terminal:
 
 ```
-npm install vun.js --save
+npm install minorm.js --save
 ```
 
-To use vun.js in your project, add following line:
+To use minorm.js in your project, add following line:
 
 ```javascript
 const MinormJS = require('minorm.js')
 const minorm = new MinormJS()
 ```
-
-# Function List
 
 # Example
 ```javascript
@@ -52,11 +47,32 @@ minorm.insertData('users', {
     "rotation": 5
 })
 
+minorm.searchData('users', {
+    "where": {
+        "name": "Enes",
+        "surname": "Katsaf"
+    }    
+}, (result) => {
+    console.log(result)
+})
+
+minorm.updateData('users', {
+    "newData": {
+        "name": "Furkan",
+        "age": 19
+    },
+    "where": {
+        "name": "Enes"
+    }
+})
+
+
 minorm.destroyData('users', {
-    where: {
+    "where": {
         "surname": "Katsaf"
     }
 })
 
-glorm.destroyTable('users')
+minorm.destroyTable('users')
+
 ```

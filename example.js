@@ -10,6 +10,22 @@ minorm.connectDatabase({
     database: process.env.DATABASE
 })
 
+minorm.createTable('users', {
+    id: "ai",
+    name: "char - 24",
+    surname: "char - 24",
+    age: "int - 11",
+    biography: "text - 1024",
+    rotation: "float - 3"
+})
+
+minorm.insertData('users', {
+    "name": "Enes",
+    "surname": "Katsaf",
+    "age": 18,
+    "biography": "I was born in Antalya",
+    "rotation": 5
+})
 
 minorm.searchData('users', {
     "where": {
@@ -20,17 +36,6 @@ minorm.searchData('users', {
     console.log(result)
 })
 
-/*minorm.createTable('users', {
-    id: "ai",
-    name: "char - 24",
-    surname: "char - 24",
-    age: "int - 11",
-    biography: "text - 1024",
-    rotation: "float - 3"
-})
-
-
-
 minorm.updateData('users', {
     "newData": {
         "name": "Furkan",
@@ -39,14 +44,13 @@ minorm.updateData('users', {
     "where": {
         "name": "Enes"
     }
-})*/
+})
 
-/*
+
 minorm.destroyData('users', {
-    where: {
+    "where": {
         "surname": "Katsaf"
     }
 })
 
 minorm.destroyTable('users')
-*/
