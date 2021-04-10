@@ -40,12 +40,12 @@ minorm.connectDatabase({
 })
 
 minorm.createTable('users', {
-    id: "ai",
-    name: "char - 24",
-    surname: "char - 24",
-    age: "int - 11",
-    biography: "text - 1024",
-    rotation: "float - 3"
+    id: "ai", // Stands for AUTO INCREMENT
+    name: "char - 24", // varchar type, length 24
+    surname: "char - 24", // varchar type, length 24
+    age: "int - 11", // integer type with length 11
+    biography: "text - 1024", // text type, length 1024
+    rotation: "float - 3" // float with length 3
 })
 
 minorm.insertData('users', {
