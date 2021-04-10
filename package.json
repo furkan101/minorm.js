@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/glorfin1337/minorm.js.git"
+    "url": "git+https://github.com/glorkan/minorm.js.git"
   },
   "keywords": [],
-  "author": "glorfin1337",
+  "author": "glorkan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/glorfin1337/minorm.js/issues"
+    "url": "https://github.com/glorkan/minorm.js/issues"
   },
-  "homepage": "https://github.com/glorfin1337/minorm.js#readme",
+  "homepage": "https://github.com/glorkan/minorm.js#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "mysql": "^2.18.1"

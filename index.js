@@ -79,7 +79,7 @@ module.exports = function() {
         con.query(query, (err, result) => {
             if (err) throw err
             logCount++
-            console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)            
+            console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)          
         })
     }
 
@@ -87,6 +87,7 @@ module.exports = function() {
 
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
         if (typeof data !== 'object') throw "Second parameter must be an object."
+        if (typeof data.where !== 'object') throw 'Type of where must be an object.'
         
         let keys = Object.keys(data.where), values = Object.values(data.where), query = `DELETE FROM ${table} WHERE`
 
@@ -99,7 +100,6 @@ module.exports = function() {
                 if(typeof values[i] == 'string') query += ` ${keys[i]} = "${values[i]}" AND`
                 else query += ` ${keys[i]} = ${values[i]} AND`
             }
-
             query = query.slice(0, -3)
         }
 
@@ -114,14 +114,59 @@ module.exports = function() {
 
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
         if (typeof data !== 'object') throw "Second parameter must be an object."
+        if (!('where' in data)) throw 'JSON object must contain "where" property.'
+        if (!('newData' in data)) throw 'JSON object must contain "newData property."'
+        if (typeof data.where !== 'object') throw 'Type of where must be an object.'
+        if (typeof data.newData !== 'object') throw 'Type of newData must be an object.'
 
+        let keys = [Object.keys(data.newData), Object.keys(data.where)], values = [Object.values(data.newData), Object.values(data.where)], query = `UPDATE ${table} SET `, i = 0
+
+        keys[0].forEach(key => {
+            if(typeof values[0][i] == 'string') query += `${key} = "${values[0][i]}",`
+            else query += `${key} = ${values[0][i]},`
+            i++
+        })
+
+        query = query.slice(0, -1) + ' WHERE '
+        i = 0
+
+        keys[1].forEach(key => {
+            if(typeof values[1][i] == 'string') query += `${key} = "${values[1][i]}",`
+            else query += `${key} = ${values[1][i]},`
+            i++
+        })
+
+        query = query.slice(0, -1)
+        con.query(query, (err, result) => {
+            if (err) throw err
+            logCount++
+            console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)
+        })
     }
 
-    this.searchData = (table, data) => {
+    this.searchData = (table, data, callback) => {
   
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
-        if (typeof data !== 'object') throw "Second parameter must be an object."        
+        if (typeof data !== 'object') throw "Second parameter must be an object." 
+        if (typeof callback !== 'function') throw "Third parameter must be a function."
+        if (!('where' in data)) throw 'JSON object must contain "where" property.'
 
+        let keys = Object.keys(data.where), values = Object.values(data.where), query = `SELECT * FROM ${table} WHERE `, i = 0
+
+        keys.forEach(key => {
+            if(typeof values[i] == 'string') query += `${key} = "${values[i]}" AND `
+            else query += `${key} = ${values[i]} AND `
+            i++
+        })
+
+        query = query.slice(0, -4)
+        console.log(query)
+        con.query(query, (err, result) => {
+            if (err) throw err
+            logCount++
+            console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)
+            callback(result)
+        })
     }
 
 }
