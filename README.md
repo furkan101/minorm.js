@@ -18,6 +18,15 @@ const MinormJS = require('minorm.js')
 const minorm = new MinormJS()
 ```
 
+# Function List
+ - `connectDatabase(JSON properties)` Connects to your MySQL database with param given.
+ - `createTable(string table, JSON structure)` Creates database file in directory with JSON file format.
+ - `destroyTable(string table)` Deletes the table you entered in table param if it exists.
+ - `insertData(string table, JSON data)` Inserts JSON object you entered in second param to database you entered in first param.
+ - `destroyData(string table, JSON fromWhere)` Deletes data you gave in second param from table.
+ - `updateData(string table, JSON newData, JSON fromWhere)` Change all data given in third param with second param.
+ - `searchData(string table, JSON objectToSearch, function callback)` Searches object you gave in second param in database, returns all rows match as an array with callback.
+
 # Example
 ```javascript
 const MinormJS = require('minorm.js')
