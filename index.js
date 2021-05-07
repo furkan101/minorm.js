@@ -1,9 +1,9 @@
 const MySQL = require('mysql')
 let isDbSetup = false, con, logCount = 0
 
-module.exports = function() {
+module.exports = {
 
-    this.connectDatabase = (params) => {
+    connectDatabase: (params) => {
         con = MySQL.createConnection({
             host: params.host,
             user: params.user,
@@ -16,9 +16,9 @@ module.exports = function() {
             logCount++
             console.log(`[MINORM LOG: #${logCount}] >> Connected to database successfully.`)
         })
-    }
+    },
     
-    this.createTable = (name, data) => {
+    createTable: (name, data) => {
 
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
         if (typeof data !== 'object') throw "Second parameter must be an object."
@@ -40,9 +40,9 @@ module.exports = function() {
             console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)
         })
     
-    }
+    },
 
-    this.destroyTable = (name) => {
+    destroyTable: (name) => {
 
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
 
@@ -54,9 +54,9 @@ module.exports = function() {
             console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)
         })
 
-    }
+    },
 
-    this.insertData = (table, data) => {
+    insertData: (table, data) => {
 
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
         if (typeof data !== 'object') throw "Second parameter must be an object."
@@ -81,9 +81,9 @@ module.exports = function() {
             logCount++
             console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)          
         })
-    }
+    },
 
-    this.destroyData = (table, data) => {
+    destroyData: (table, data) => {
 
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
         if (typeof data !== 'object') throw "Second parameter must be an object."
@@ -108,9 +108,9 @@ module.exports = function() {
             logCount++
             console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)            
         })
-    }
+    },
 
-    this.updateData = (table, data) => {
+    updateData: (table, data) => {
 
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
         if (typeof data !== 'object') throw "Second parameter must be an object."
@@ -142,9 +142,9 @@ module.exports = function() {
             logCount++
             console.log(`[MINORM LOG: #${logCount}] >> query '${query}' has been executed.`)
         })
-    }
+    },
 
-    this.searchData = (table, data, callback) => {
+    searchData: (table, data, callback) => {
   
         if (!isDbSetup) throw "Database settings are not set up. Please use connectDatabase function."
         if (typeof data !== 'object') throw "Second parameter must be an object." 
