@@ -1,6 +1,6 @@
 {
   "name": "minorm.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "minorm.js is a simple library to use JSON queries for MySQL database, kind of a little orm, written in Node.js.",
   "main": "index.js",
   "directories": {
